@@ -24,12 +24,14 @@ int power(int a, int b)
 
 void shell_sort(int *array, size_t size)
 {
-	int gaps[size], tmp = 0, k;
+	int *gaps, tmp = 0, k;
 	size_t i, j, l;
 
 
-	if (array != NULL)
+	if (array == NULL)
 		return;
+
+	gaps = malloc(sizeof(int) * size);
 
 	for (i = 1, l = size; i <= size; i++, l--)
 		gaps[i - 1] = (power(3, l) - 1) / 2;
@@ -48,4 +50,5 @@ void shell_sort(int *array, size_t size)
 			print_array(array, size);
 		i++;
 	}
+	free(gaps);
 }
